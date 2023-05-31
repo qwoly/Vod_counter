@@ -1,0 +1,55 @@
+/* Google font */
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #222;
+}
+.container{
+    width: 690px;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+}
+.wrapper{
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+.wrapper .text-input{
+    display: flex;
+}
+.text-input textarea{
+    height: 250px;
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    background: none;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+.text-input .to{
+    border-left: 1px solid #bbb;
+    border-radius: 0px;
+}
+.container button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    background: #fce000;
+    cursor: pointer;
+    border-radius: 5px;
+    color: black;
+    font-size: 17px;
+}
