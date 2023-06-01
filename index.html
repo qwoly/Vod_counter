@@ -7,15 +7,90 @@
     <title>Vod counter</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
+    <body>
+      <div class="container">
         <div class="wrapper">
-            <div class="text-input">
-                <textarea class="from" placeholder="Ввести ссылку"></textarea>
-                <textarea class="to" placeholder="Результат" readonly disabled></textarea>
-            </div>
+          <div class="text-input">
+            <textarea id="inputText" class="from" placeholder="Ввести ссылку"></textarea>
+            <textarea id="outputText" class="to" placeholder="Результат" readonly disabled></textarea>
+          </div>
         </div>
-        <button>POPO</button>
-    </div>
-</body>
+        <button onclick="processText()">POPO</button>
+      </div>
+    
+      <script>
+        function removeEnglishCharactersAndSymbols(text) {
+          var regex = /[a-zA-Z0-9:.\-://?_=&]/g;
+          var result = text.replace(regex, '');
+          return result;
+        }
+    
+        function removeDuplicateLines(text) {
+          var lines = text.split("\n");
+          var uniqueLines = Array.from(new Set(lines));
+          var result = uniqueLines.join("\n");
+          return result;
+        }
+    
+        function removeEmptyLinesAndPhrase(text) {
+          var lines = text.split("\n");
+          var filteredLines = lines.filter(function (line) {
+            return (
+              line.trim() !== "" &&
+              line.indexOf("цель мая") === -1 &&
+              line.indexOf("Цель – мая") === -1 &&
+              line.indexOf("Цель  мая –  июня") === -1 &&
+              line.indexOf("цель июня") === -1 &&
+              line.indexOf("Цель – июня") === -1 &&
+              line.indexOf("Цель  июня –  июля") === -1 &&
+              line.indexOf("цель июля") === -1 &&
+              line.indexOf("Цель – июля") === -1 &&
+              line.indexOf("Цель  июля –  августа") === -1 &&
+              line.indexOf("цель августа") === -1 &&
+              line.indexOf("Цель – августа") === -1 &&
+              line.indexOf("Цель  августа –  сентября") === -1 &&
+              line.indexOf("цель сентября") === -1 &&
+              line.indexOf("Цель – сентября") === -1 &&
+              line.indexOf("Цель  сентября –  октября") === -1 &&
+              line.indexOf("цель октября") === -1 &&
+              line.indexOf("Цель – октября") === -1 &&
+              line.indexOf("Цель  октября –  ноября") === -1 &&
+              line.indexOf("цель ноября") === -1 &&
+              line.indexOf("Цель – ноября") === -1 &&
+              line.indexOf("Цель  ноября –  декабря") === -1 &&
+              line.indexOf("цель декабря") === -1 &&
+              line.indexOf("Цель – декабря") === -1 &&
+              line.indexOf("Цель  декабря –  января") === -1 &&
+              line.indexOf("цель января") === -1 &&
+              line.indexOf("Цель – января") === -1 &&
+              line.indexOf("Цель  января –  февраля") === -1 &&
+              line.indexOf("цель февраля") === -1 &&
+              line.indexOf("Цель – февраля") === -1 &&
+              line.indexOf("Цель  февраля –  марта") === -1 &&
+              line.indexOf("цель марта") === -1 &&
+              line.indexOf("Цель – марта") === -1 &&
+              line.indexOf("Цель  марта –  апреля") === -1 &&
+              line.indexOf("цель апреля") === -1 &&
+              line.indexOf("Цель – апреля") === -1 &&
+              line.indexOf("Цель  апреля –  мая") === -1 
+            );
+          });
+          var result = filteredLines.join("\n");
+          return result;
+        }
+    
+        function processText() {
+          var inputText = document.getElementById("inputText").value;
+          var filteredText = removeEnglishCharactersAndSymbols(inputText);
+          var uniqueText = removeDuplicateLines(filteredText);
+          var processedText = removeEmptyLinesAndPhrase(uniqueText);
+          var linesCount = processedText.split("\n").length;
+          var resultDiv = document.getElementById("outputText");
+          resultDiv.innerHTML = processedText;
+          resultDiv.value = resultDiv.value.replace(/<br>/g, "\n");
+          var button = document.querySelector("button");
+          button.innerText = "POPO COUNTER: " + linesCount;
+        }
+      </script>
+    </body>
 </html>

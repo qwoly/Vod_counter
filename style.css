@@ -14,10 +14,10 @@ body {
     background: #222;
 }
 .container{
-    width: 690px;
+    width: 900px;
     background: white;
     border-radius: 16px;
-    padding: 30px;
+    padding: 15px;
 }
 .wrapper{
     border: 1px solid #bbb;
@@ -33,7 +33,7 @@ body {
     outline: none;
     resize: none;
     background: none;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 5px;
     padding: 10px 15px;
 }
